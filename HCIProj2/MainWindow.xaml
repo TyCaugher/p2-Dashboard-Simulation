@@ -13,14 +13,19 @@
     </Window.Resources>
 
     <Grid Background="#FF2E2F45">
-        <Slider x:Name="mySlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="10" Value="0"/>
-        <Grid Margin="0,0,0,-120">
+        <Grid Margin="101,0">
+            <!--The gray transparent arc to be filled-->
             <ed:Arc StartAngle="-120" EndAngle="120" Stretch="None" 
-                    Height="300" Width="300" StrokeThickness="20"      
-                    StrokeDashArray=".25" Stroke="#FF484D5F"/>
-            <ed:Arc StartAngle="0" EndAngle="{Binding Path=Value, ElementName=mySlider, Mode=TwoWay}" Stretch="None" 
-                    Height="300" Width="300" StrokeThickness="20"
-                    StrokeDashArray=".25" Stroke="Blue" RenderTransformOrigin="0.5,0.5">
+                    Height="400" Width="400" StrokeThickness="20"      
+                    StrokeDashArray=".25" Stroke="#FF484D5F" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <!--The outer ticks-->
+            <ed:Arc StartAngle="-120" EndAngle="120" 
+                    Height="360" Width="360"      
+                    StrokeDashArray="5" Stroke="White" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="None" StrokeThickness="7"/>
+            <!--The filled-in tachometer-->
+            <ed:Arc StartAngle="0" EndAngle="{Binding Path=Value, ElementName=RPM, Mode=TwoWay}" Stretch="None" 
+                    Height="400" Width="400" StrokeThickness="20"
+                    StrokeDashArray=".25" Stroke="Turquoise" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <ed:Arc.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -31,8 +36,8 @@
                 </ed:Arc.RenderTransform>
             </ed:Arc>
             <ed:Arc StartAngle="50" Stretch="None" 
-                    Height="300" Width="300" StrokeThickness="20"
-                    StrokeDashArray=".25" Stroke="Red" RenderTransformOrigin="0.5,0.5">
+                    Height="400" Width="400" StrokeThickness="20"
+                    StrokeDashArray=".25" Stroke="Red" VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="322,-39,68,108">
                 <ed:Arc.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -42,15 +47,41 @@
                     </TransformGroup>
                 </ed:Arc.RenderTransform>
             </ed:Arc>
+            <!--The fuel Gauge-->
+            <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
+                    Height="300" Width="300" StrokeThickness="20"
+                    StrokeDashArray=".25" Stroke="#FF484D5F"
+                    VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55"/>
+
+
+            <Grid Width="500">
+               
+            </Grid>
         </Grid>
+        
+        <Border VerticalAlignment="Center" HorizontalAlignment="Left" Width="">
+
+        </Border>
+        
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0,0,0,-50">
             <TextBlock Text="mph" Foreground="#FF878A9F" HorizontalAlignment="Center"
                         FontSize="14"/>
-            <TextBlock x:Name="Speed" Text="{Binding Path=Value, ElementName=mySlider, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center"
+            <TextBlock x:Name="Speed" Text="{Binding Path=Value, ElementName=SpeedSlider, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center"
                         FontSize="110" FontWeight="Light" Margin="0,-25,0,0"/>
         </StackPanel>
-
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Margin="0,0,0,-330" CornerRadius="5" Background="#FF191A25">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="auto" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60"/>
+            </StackPanel>
+        </Border>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
+            <TextBlock Text="Speed"/>
+            <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
+            <TextBlock Text="RPM"/>
+            <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+        </StackPanel>
     </Grid>
 
 </Window>

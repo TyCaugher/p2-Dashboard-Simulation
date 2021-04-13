@@ -27,6 +27,13 @@ namespace HCIProj2
         {
             InitializeComponent();  
         }
+
+        public string TextBoxGearing = "0";
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
     public class ColorToBrushConverter : IValueConverter
