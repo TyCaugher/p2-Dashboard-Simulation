@@ -47,22 +47,46 @@
                     </TransformGroup>
                 </ed:Arc.RenderTransform>
             </ed:Arc>
+            <Grid Width="500">
+                <Label Content="1" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="76,216,398,211" VerticalAlignment="Center" Width="26"/>
+                <Label Content="2" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="88,152,386,275" VerticalAlignment="Center" Width="26"/>
+                <Label Content="3" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="122,100,352,327" VerticalAlignment="Center" Width="26"/>
+                <Label Content="4" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="173,63,301,364" VerticalAlignment="Center" Width="26"/>
+                <Label Content="5" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="236,52,238,375" VerticalAlignment="Center" Width="26"/>
+                <Label Content="6" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="300,62,174,365" VerticalAlignment="Center" Width="26"/>
+                <Label Content="7" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="354,100,120,327" VerticalAlignment="Center" Width="26"/>
+                <Label Content="8" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="390,152,84,275" VerticalAlignment="Center" Width="26"/>
+                <Label Content="9" HorizontalAlignment="Center" Foreground="White" 
+                       FontSize="25" Margin="401,216,73,211" VerticalAlignment="Center" Width="26"/>
+                <Label Content="x1000 rpm" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="217,100,217,0"/>
+            </Grid>
             <!--The fuel Gauge-->
             <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="#FF484D5F"
                     VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55"/>
-
-
-            <Grid Width="500">
-               
-            </Grid>
+            <ed:Arc StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Fuel, Mode=TwoWay}" Stretch="None" 
+                    Height="300" Width="300" StrokeThickness="20"
+                    StrokeDashArray=".25" Stroke="Turquoise" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55">
+                <ed:Arc.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="-251.017"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ed:Arc.RenderTransform>
+            </ed:Arc>
         </Grid>
-        
-        <Border VerticalAlignment="Center" HorizontalAlignment="Left" Width="">
 
-        </Border>
-        
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0,0,0,-50">
             <TextBlock Text="mph" Foreground="#FF878A9F" HorizontalAlignment="Center"
@@ -81,6 +105,17 @@
             <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
             <TextBlock Text="RPM"/>
             <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+            <TextBlock Text="Fuel"/>
+            <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" RenderTransformOrigin="0.5,0.5">
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
         </StackPanel>
     </Grid>
 
