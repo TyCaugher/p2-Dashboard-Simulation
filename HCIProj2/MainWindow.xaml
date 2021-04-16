@@ -25,6 +25,9 @@
             <ed:Arc StartAngle="0" EndAngle="{Binding Path=Value, ElementName=RPM, Mode=TwoWay}" Stretch="None" 
                     Height="400" Width="400" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="Turquoise" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <ed:Arc.Effect>
+                    <BlurEffect Radius="2"/>
+                </ed:Arc.Effect>
                 <ed:Arc.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -46,6 +49,9 @@
                     </TransformGroup>
                 </ed:Arc.RenderTransform>
             </ed:Arc>
+
+            <!--Speedometer labels-->
+
             <Grid Width="500">
                 <Label Content="1" HorizontalAlignment="Center" Foreground="White" 
                        FontSize="25" Margin="76,216,398,211" VerticalAlignment="Center" Width="26"/>
@@ -67,26 +73,89 @@
                        FontSize="25" Margin="401,216,73,211" VerticalAlignment="Center" Width="26"/>
                 <Label Content="x1000 rpm" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="217,100,217,0"/>
             </Grid>
+
             <!--The fuel Gauge-->
-            <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
+            <Grid HorizontalAlignment="Right">
+                <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="#FF484D5F"
                     VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55"/>
-            <ed:Arc StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Fuel, Mode=TwoWay}" Stretch="None" 
+                <ed:Arc x:Name="FuelGauge" StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Fuel, Mode=TwoWay}" Stretch="None" 
+                    Height="300" Width="300" StrokeThickness="20"
+                    StrokeDashArray=".25" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55">
+                    <ed:Arc.Effect>
+                        <BlurEffect Radius="2"/>
+                    </ed:Arc.Effect>
+                    <ed:Arc.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="-251.017"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ed:Arc.RenderTransform>
+                </ed:Arc>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="40" Source="gas-station.png" Margin="0,0,44,134"/>
+                <Label Content="E" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,327,10,100.5" Height="45" Width="36"/>
+                <Label Content="F" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,105,167,322.5" Height="45" Width="36"/>
+
+
+                <!--Fuel Info-->
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="142,187,60,191.5" Width="98" Height="94" >
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="32" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="avg. mpg" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="Mileage" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="mi. range" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="87,326" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBlock Text="mi." Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Border>
+
+            </Grid>
+            <!--The temperature gauge-->
+
+            <Grid HorizontalAlignment="Left">
+                <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
+                    Height="300" Width="300" StrokeThickness="20"
+                    StrokeDashArray=".25" Stroke="#FF484D5F"
+                    VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55" RenderTransformOrigin="0.5,0.5">
+                    <ed:Arc.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ed:Arc.RenderTransform>
+                </ed:Arc>
+                <ed:Arc StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Fuel, Mode=TwoWay}" Stretch="None" 
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="Turquoise" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55">
-                <ed:Arc.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                        <SkewTransform AngleY="0" AngleX="0"/>
-                        <RotateTransform Angle="-251.017"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ed:Arc.RenderTransform>
-            </ed:Arc>
+                    <ed:Arc.Effect>
+                        <BlurEffect/>
+                    </ed:Arc.Effect>
+                    <ed:Arc.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="251.017"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ed:Arc.RenderTransform>
+                </ed:Arc>
+            </Grid>
         </Grid>
 
         <!--Spedometer-->
+
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0,0,0,-30">
             <TextBlock x:Name="Speed" Text="{Binding Path=Value, ElementName=SpeedSlider, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center"
@@ -94,7 +163,9 @@
             <TextBlock Text="mph" Foreground="#FF878A9F" HorizontalAlignment="Center"
                         FontSize="16"/>
         </StackPanel>
+
         <!--The gear HUD-->
+
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Image x:Name="left_blinker" Source="left_blinker.png" VerticalAlignment="Bottom" 
                    Margin="0,0,0,40" Width="50" Height="50" HorizontalAlignment="Left"/>
@@ -109,13 +180,14 @@
         </StackPanel>
 
         <!--Debug sliders-->
+
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
             <TextBlock Text="Speed" Foreground="White"/>
             <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
             <TextBlock Text="RPM" Foreground="White"/>
             <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
             <TextBlock Text="Fuel" Foreground="White"/>
-            <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" RenderTransformOrigin="0.5,0.5" ValueChanged="Fuel_Changed">
+            <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" Value="0" RenderTransformOrigin="0.5,0.5" ValueChanged="FuelChanged">
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="-1"/>

@@ -23,22 +23,24 @@ namespace HCIProj2
 
     public partial class MainWindow : Window
     {
+        DispatcherTimer timer = new DispatcherTimer();
+
         public MainWindow()
         {
+
             InitializeComponent();
+
+            left_blinker.Opacity = 0.0;
+            right_blinker.Opacity = 0.0;
+
+            timer.Tick += TimerTick;
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+
+            Mileage.Content = 0;
 
             // Reset the blinker opacity on launch
 
             // Blink timer
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += TimerTick;
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
-            timer.Start();
-        }
-
-
-        private void Fuel_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
             
         }
 
@@ -81,6 +83,7 @@ namespace HCIProj2
         {
             if (!left)
             {
+                timer.Start();
                 isBlinking = true;
                 left = true;
                 Console.WriteLine("Left Blinker on");
@@ -88,6 +91,7 @@ namespace HCIProj2
             }
             else
             {
+                timer.Stop();
                 isBlinking = false;
                 left = false;
                 Console.WriteLine("Left Blinker off");
@@ -97,8 +101,10 @@ namespace HCIProj2
 
         private void RightBlinker(object sender, RoutedEventArgs e)
         {
+ 
             if (!right)
             {
+                timer.Start();
                 isBlinking = true;
                 right = true;
                 Console.WriteLine("Left Blinker on");
@@ -106,6 +112,7 @@ namespace HCIProj2
             }
             else
             {
+                timer.Stop();
                 isBlinking = false;
                 right = false;
                 Console.WriteLine("Left Blinker off");
@@ -115,8 +122,10 @@ namespace HCIProj2
 
         private void BlinkEmergency(object sender, RoutedEventArgs e)
         {
+
             if (!em)
             {
+                timer.Start();
                 isBlinking = true;
                 em = true;
                 Console.WriteLine("Emergency on");
@@ -124,11 +133,35 @@ namespace HCIProj2
             }
             else
             {
+                timer.Stop();
                 isBlinking = false;
                 em = false;
                 Console.WriteLine("Emergency off");
                 emergency.Background = Brushes.White;
             }
+        }
+
+        private void FuelChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            double mpg = Fuel.Value * 3;
+            double fuelVal = Fuel.Value;
+
+            Mileage.Content = mpg;
+
+            if (fuelVal >= 60 && fuelVal <= 120) // If between 90 and 120
+            {
+                FuelGauge.Stroke = Brushes.Turquoise;
+            }
+            else if (fuelVal >= 30 && fuelVal < 60)
+            {
+                FuelGauge.Stroke = Brushes.Orange;
+            }
+            else
+            {
+                FuelGauge.Stroke = Brushes.Red;
+            }
+  
+
         }
     }
 }

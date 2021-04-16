@@ -111,5 +111,8 @@
   <ItemGroup>
     <Resource Include="left_blinker.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="gas-station.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
