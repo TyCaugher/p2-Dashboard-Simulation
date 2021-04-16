@@ -9,7 +9,6 @@
         Title="MainWindow" Height="500" Width="1000">
     <Window.Resources>
         <SolidColorBrush x:Key="TachColor" Color="Turquoise"/>
-        <local:ColorToBrushConverter x:Key="colorToBrushConverter"/>
     </Window.Resources>
 
     <Grid Background="#FF2E2F45">
@@ -87,26 +86,36 @@
             </ed:Arc>
         </Grid>
 
+        <!--Spedometer-->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Margin="0,0,0,-50">
-            <TextBlock Text="mph" Foreground="#FF878A9F" HorizontalAlignment="Center"
-                        FontSize="14"/>
+                    Margin="0,0,0,-30">
             <TextBlock x:Name="Speed" Text="{Binding Path=Value, ElementName=SpeedSlider, Mode=TwoWay}" Foreground="White" HorizontalAlignment="Center"
                         FontSize="110" FontWeight="Light" Margin="0,-25,0,0"/>
+            <TextBlock Text="mph" Foreground="#FF878A9F" HorizontalAlignment="Center"
+                        FontSize="16"/>
         </StackPanel>
-        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="60" Margin="0,0,0,-330" CornerRadius="5" Background="#FF191A25">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="auto" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock Text="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60"/>
-            </StackPanel>
-        </Border>
+        <!--The gear HUD-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Image x:Name="left_blinker" Source="left_blinker.png" VerticalAlignment="Bottom" 
+                   Margin="0,0,0,40" Width="50" Height="50" HorizontalAlignment="Left"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60" Margin="0,0,0,20" CornerRadius="5" Background="#FF191A25">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="auto" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60"/>
+                </StackPanel>
+            </Border>
+            <Image x:Name="right_blinker" Source="right_blinker.png" VerticalAlignment="Bottom" 
+                   Margin="0,0,0,40" Width="50" Height="50" HorizontalAlignment="Right"/>
+        </StackPanel>
+
+        <!--Debug sliders-->
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
-            <TextBlock Text="Speed"/>
+            <TextBlock Text="Speed" Foreground="White"/>
             <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
-            <TextBlock Text="RPM"/>
+            <TextBlock Text="RPM" Foreground="White"/>
             <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
-            <TextBlock Text="Fuel"/>
-            <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" RenderTransformOrigin="0.5,0.5">
+            <TextBlock Text="Fuel" Foreground="White"/>
+            <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" RenderTransformOrigin="0.5,0.5" ValueChanged="Fuel_Changed">
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="-1"/>
@@ -116,6 +125,15 @@
                     </TransformGroup>
                 </Slider.RenderTransform>
             </Slider>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="gear_up" Content="Gear +"/>
+                <Button x:Name="gear_down" Content="Gear -"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="bl_left" Content="Left" Click="LeftBlinker"/>
+                <Button x:Name="emergency" Content="!!!" Click="BlinkEmergency"/>
+                <Button x:Name="bl_right" Content="Right" Click="RightBlinker"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 

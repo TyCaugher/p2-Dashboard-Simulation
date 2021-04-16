@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCIProj2", "HCIProj2\HCIProj2.csproj", "{FE43DA5C-ED9C-41DD-9C2E-CE2AD2AB45A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{DF0B7D8A-B88F-4E7D-B91E-0CA04D674E0D}"
+	ProjectSection(SolutionItems) = preProject
+		Images\blinker.png = Images\blinker.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
