@@ -101,7 +101,7 @@
 
 
                 <!--Fuel Info-->
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"  Width="100" Height="80" Margin="143,194,59,195" >
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"  Width="100" Height="80" Margin="140,200,71,189" >
                     <StackPanel VerticalAlignment="Center">
                         
                         <StackPanel Orientation="Horizontal">
@@ -114,7 +114,7 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="122,279,89,132" Width="100" Height="60">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="-45,375,256,34" Width="100" Height="60">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="564" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -144,7 +144,7 @@
                         </TransformGroup>
                     </ed:Arc.RenderTransform>
                 </ed:Arc>
-                <ed:Arc StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Fuel, Mode=TwoWay}" Stretch="None" 
+                <ed:Arc StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Temp, Mode=TwoWay}" Stretch="None" 
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="Turquoise" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55">
                     <ed:Arc.Effect>
@@ -160,25 +160,29 @@
                     </ed:Arc.RenderTransform>
                 </ed:Arc>
 
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"   Width="100" Height="80" Margin="67,194,133,195">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"   Width="100" Height="80" Margin="68,200,143,189">
                     <StackPanel VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="83° F" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="Outside" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label x:Name="Cruise_Label" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="mph Cruise" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
                 <!--Lights beneath temp-->
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="87,278,124,131" Width="100" Height="60">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Margin="101,285,110,124" Width="100" Height="60">
                     <StackPanel>
                         <StackPanel Margin="0,5,0,5" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
                             <Image x:Name="CEL_Icon" Margin="3,0,0,0" Source="CEL.png" Width="25"/>
-                            <Image Width="25" Source="oil.png" Margin="3,0,0,0"/>
-                            <Image Source="battery.png" Margin="3,0,0,0" Width="20"/>
+                            <Image x:Name="Oil_Icon" Width="25" Source="oil.png" Margin="3,0,0,0"/>
+                            <Image x:Name="Bat_Icon" Source="battery.png" Margin="3,0,0,0" Width="20"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel x:Name="Notification" Orientation="Horizontal">
                             <Image Source="Notif.png" Width="15" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                            <TextBlock x:Name="Notification" Text="Service soon" Foreground="#FF9900" Margin="5,0,0,0"/>
+                            <TextBlock Text="Service soon" Foreground="#FF9900" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -186,6 +190,16 @@
                 <Label Content="C" FontSize="25" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,325,0,99" Height="45" Width="36"/>
                 <Label Content="H" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,103,86,321" Height="45" Width="36"/>
                 <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Source="temp.png" Margin="56,338,215,91"/>
+
+                <Border HorizontalAlignment="Right" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="0,375,-52,34" Width="100" Height="60">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Label FontSize="20" Content="S" Foreground="White"/>
+                        <Label FontSize="20" Content="D" Foreground="Turquoise"/>
+                        <Label FontSize="20" Content="N" Foreground="White"/>
+                        <Label FontSize="20" Content="P" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
             </Grid>
         </Grid>
 
@@ -203,45 +217,49 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Image x:Name="left_blinker" Source="left_blinker.png" VerticalAlignment="Bottom" 
-                   Margin="0,0,0,40" Width="50" Height="50" HorizontalAlignment="Left"/>
-            <Border HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60" Margin="0,0,0,20" CornerRadius="5" Background="#FF191A25">
+                   Margin="0,0,60,120" Width="50" Height="50" HorizontalAlignment="Left"/>
+            <Border HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60" Margin="0,0,0,10" CornerRadius="5" Background="#FF191A25">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="auto" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60"/>
+                    <TextBlock Text="D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60"/>
                 </StackPanel>
             </Border>
             <Image x:Name="right_blinker" Source="right_blinker.png" VerticalAlignment="Bottom" 
-                   Margin="0,0,0,40" Width="50" Height="50" HorizontalAlignment="Right"/>
+                   Margin="60,0,0,120" Width="50" Height="50" HorizontalAlignment="Right"/>
         </StackPanel>
 
         <!--Debug sliders-->
-
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Width="100">
-            <TextBlock Text="Speed" Foreground="White"/>
-            <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
-            <TextBlock Text="RPM" Foreground="White"/>
-            <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
-            <TextBlock Text="Fuel" Foreground="White"/>
-            <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" Value="0" RenderTransformOrigin="0.5,0.5" ValueChanged="FuelChanged">
-                <Slider.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                        <SkewTransform AngleY="0" AngleX="0"/>
-                        <RotateTransform Angle="0"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Slider.RenderTransform>
-            </Slider>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="gear_up" Content="Gear +"/>
-                <Button x:Name="gear_down" Content="Gear -"/>
+        <Expander Name="Debug_Controls" Background="Black" HorizontalAlignment="Right" VerticalAlignment="Top"
+                  Header="Control" IsExpanded="False" Width="110" Foreground="White">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="100">
+                <TextBlock Text="Speed" Foreground="White"/>
+                <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
+                <TextBlock Text="RPM" Foreground="White"/>
+                <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+                <TextBlock Text="Temp" Foreground="White"/>
+                <Slider x:Name="Temp" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+                <TextBlock Text="Fuel" Foreground="White"/>
+                <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" Value="0" RenderTransformOrigin="0.5,0.5" ValueChanged="FuelChanged">
+                    <Slider.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Slider.RenderTransform>
+                </Slider>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="gear_up" Content="Gear +"/>
+                    <Button x:Name="gear_down" Content="Gear -"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="bl_left" Content="Left" Click="LeftBlinker"/>
+                    <Button x:Name="emergency" Content="!!!" Click="BlinkEmergency"/>
+                    <Button x:Name="bl_right" Content="Right" Click="RightBlinker"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="bl_left" Content="Left" Click="LeftBlinker"/>
-                <Button x:Name="emergency" Content="!!!" Click="BlinkEmergency"/>
-                <Button x:Name="bl_right" Content="Right" Click="RightBlinker"/>
-            </StackPanel>
-        </StackPanel>
+        </Expander>
     </Grid>
 
 </Window>

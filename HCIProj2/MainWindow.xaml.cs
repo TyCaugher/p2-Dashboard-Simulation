@@ -32,6 +32,10 @@ namespace HCIProj2
 
             left_blinker.Opacity = 0.0;
             right_blinker.Opacity = 0.0;
+            CEL_Icon.Opacity = 0.0;
+            Bat_Icon.Opacity = 0.0;
+            Oil_Icon.Opacity = 0.0;
+            Notification.Opacity = 0;
 
             timer.Tick += TimerTick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
