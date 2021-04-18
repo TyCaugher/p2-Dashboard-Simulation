@@ -129,5 +129,17 @@
   <ItemGroup>
     <Resource Include="temp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="seatbelt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="airbag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="headlight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Notif_red.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

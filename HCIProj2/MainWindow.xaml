@@ -37,7 +37,7 @@
                     </TransformGroup>
                 </ed:Arc.RenderTransform>
             </ed:Arc>
-            <ed:Arc StartAngle="50" Stretch="None" 
+            <ed:Arc StartAngle="20" Stretch="None" 
                     Height="400" Width="400" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="Red" VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="322,-39,68,108">
                 <ed:Arc.RenderTransform>
@@ -76,6 +76,7 @@
 
             <!--The fuel Gauge-->
             <Grid HorizontalAlignment="Right">
+                <Image x:Name="Headlight_Icon" VerticalAlignment="Top" HorizontalAlignment="Center" Width="26" Source="headlight.png" Margin="116,70,205,0"/>
                 <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="#FF484D5F"
@@ -99,22 +100,32 @@
                 <Label Content="E" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,327,10,100.5" Height="45" Width="36"/>
                 <Label Content="F" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,105,167,322.5" Height="45" Width="36"/>
 
+                <StackPanel HorizontalAlignment="Center" Height="75" VerticalAlignment="Center" Margin="152,282,107,115.5" Width="88">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="Seatbelt_Icon" Width="40" Source="seatbelt.png"/>
+                        <Image x:Name="Airbag_Icon" Width="25" Source="airbag.png"/>
+                    </StackPanel>
+                    <StackPanel x:Name="Door_Notif" Orientation="Horizontal">
+                        <Image Width="15" Source="Notif_red.png"/>
+                        <TextBlock Text="Door open" Margin="3,0,0,0" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
 
                 <!--Fuel Info-->
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"  Width="100" Height="80" Margin="140,200,71,189" >
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"  Width="100" Height="80" Margin="168,202,67,190.5" >
                     <StackPanel VerticalAlignment="Center">
-                        
+
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="32" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="32" Foreground="Turquoise" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="avg. mpg" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="Mileage" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label x:Name="Mileage" Foreground="Turquoise" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="mi. range" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="-45,375,256,34" Width="100" Height="60">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="-7,380,254,32.5" Width="100" Height="60">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="564" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -163,11 +174,11 @@
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"   Width="100" Height="80" Margin="68,200,143,189">
                     <StackPanel VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="83° F" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label Content="83° F" Foreground="Turquoise" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="Outside" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="Cruise_Label" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label x:Name="Cruise_Label" Foreground="Turquoise" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="mph Cruise" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
@@ -235,7 +246,7 @@
                 <TextBlock Text="Speed" Foreground="White"/>
                 <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
                 <TextBlock Text="RPM" Foreground="White"/>
-                <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+                <Slider x:Name="RPM" Minimum="0" Maximum="170" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
                 <TextBlock Text="Temp" Foreground="White"/>
                 <Slider x:Name="Temp" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" ValueChanged="Temp_Change"/>
                 <TextBlock Text="Fuel" Foreground="White"/>
@@ -250,10 +261,6 @@
                     </Slider.RenderTransform>
                 </Slider>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button x:Name="gear_up" Content="Gear +"/>
-                    <Button x:Name="gear_down" Content="Gear -"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button x:Name="bl_left" Content="Left" Click="LeftBlinker"/>
                     <Button x:Name="emergency" Content="!!!" Click="BlinkEmergency"/>
                     <Button x:Name="bl_right" Content="Right" Click="RightBlinker"/>
@@ -262,11 +269,12 @@
                     <Button x:Name="CEL_Button" Content="CEL" Click="CEL_Click"/>
                     <Button x:Name="Oil_Button" Content="Oil" Click="Oil_Click"/>
                     <Button x:Name="Bat_Button" Content="Bat" Click="Bat_Click"/>
+                    <Button x:Name="Airbag_Button" Content="AirB" Click="Airback_Click"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button x:Name="Seat_Button" Content="Belt"/>
-                    <Button x:Name="Door_Button" Content="Door"/>
-                    <Button x:Name="Lights_Button" Content="Lights"/>
+                    <Button x:Name="Seat_Button" Content="Belt" Click="Seatbelt_Click"/>
+                    <Button x:Name="Door_Button" Content="Door" Click="Door_Click"/>
+                    <Button x:Name="Lights_Button" Content="Lights" Click="Lights_Click"/>
                 </StackPanel>
             </StackPanel>
         </Expander>

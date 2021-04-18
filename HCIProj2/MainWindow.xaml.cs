@@ -39,6 +39,9 @@ namespace HCIProj2
             Oil_Icon.Opacity = 0.0;
             Notification.Opacity = 0;
 
+            Door_Notif.Opacity = 0;
+            Airbag_Icon.Opacity = 0;
+
             timer.Tick += TimerTick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
 
@@ -54,6 +57,11 @@ namespace HCIProj2
         private bool cel = false;
         private bool battery = false;
         private bool oil = false;
+
+        private bool seatbelt = false;
+        private bool headlights = false;
+        private bool airbag = false;
+        private bool door = false;
 
         private void TimerTick(object sender, EventArgs e)
         {
@@ -100,6 +108,7 @@ namespace HCIProj2
                 timer.Stop();
                 isBlinking = false;
                 left = false;
+                left_blinker.Opacity = 0;
                 Console.WriteLine("Left Blinker off");
                 bl_left.Background = Brushes.WhiteSmoke;
             }
@@ -121,6 +130,7 @@ namespace HCIProj2
                 timer.Stop();
                 isBlinking = false;
                 right = false;
+                right_blinker.Opacity = 0;
                 Console.WriteLine("Left Blinker off");
                 bl_right.Background = Brushes.White;
             }
@@ -142,6 +152,8 @@ namespace HCIProj2
                 timer.Stop();
                 isBlinking = false;
                 em = false;
+                right_blinker.Opacity = 0;
+                left_blinker.Opacity = 0;
                 Console.WriteLine("Emergency off");
                 emergency.Background = Brushes.White;
             }
@@ -263,6 +275,62 @@ namespace HCIProj2
                 Bat_Icon.Opacity = 0;
                 battery = false;
                 ServiceCheck();
+            }
+        }
+
+        private void Seatbelt_Click(object sender, RoutedEventArgs e)
+        {
+            if (!seatbelt)
+            {
+                Seatbelt_Icon.Opacity = 0;
+                seatbelt = true;
+            }
+            else
+            {
+                Seatbelt_Icon.Opacity = 1;
+                seatbelt = false;
+            }
+        }
+
+        private void Door_Click(object sender, RoutedEventArgs e)
+        {
+            if (!door)
+            {
+                Door_Notif.Opacity = 1;
+                door = true;
+            }
+            else
+            {
+                Door_Notif.Opacity = 0;
+                door = false;
+            }
+        }
+
+        private void Lights_Click(object sender, RoutedEventArgs e)
+        {
+            if (!headlights)
+            {
+                Headlight_Icon.Opacity = 1;
+                headlights = true;
+            }
+            else
+            {
+                Headlight_Icon.Opacity = 0;
+                headlights = false;
+            }
+        }
+
+        private void Airback_Click(object sender, RoutedEventArgs e)
+        {
+            if (!airbag)
+            {
+                Airbag_Icon.Opacity = 1;
+                airbag = true;
+            }
+            else
+            {
+                Airbag_Icon.Opacity = 0;
+                airbag = false;
             }
         }
     }
