@@ -106,40 +106,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="right_blinker.png" />
+    <Resource Include="Icons\right_blinker.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="left_blinker.png" />
+    <Resource Include="Icons\left_blinker.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="gas-station.png" />
+    <Resource Include="Icons\gas-station.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="CEL.png" />
+    <Resource Include="Icons\CEL.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Notif.png" />
+    <Resource Include="Icons\Notif.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="oil.png" />
+    <Resource Include="Icons\oil.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="battery.png" />
+    <Resource Include="Icons\battery.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="temp.png" />
+    <Resource Include="Icons\temp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="seatbelt.png" />
+    <Resource Include="Icons\seatbelt.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="airbag.png" />
+    <Resource Include="Icons\airbag.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="headlight.png" />
+    <Resource Include="Icons\headlight.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Notif_red.png" />
+    <Resource Include="Icons\Notif_red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

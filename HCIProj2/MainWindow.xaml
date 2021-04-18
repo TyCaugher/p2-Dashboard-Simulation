@@ -76,7 +76,7 @@
 
             <!--The fuel Gauge-->
             <Grid HorizontalAlignment="Right">
-                <Image x:Name="Headlight_Icon" VerticalAlignment="Top" HorizontalAlignment="Center" Width="26" Source="headlight.png" Margin="116,70,205,0"/>
+                <Image x:Name="Headlight_Icon" VerticalAlignment="Top" HorizontalAlignment="Center" Width="26" Source="Icons/headlight.png" Margin="116,70,205,0"/>
                 <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="#FF484D5F"
@@ -96,17 +96,17 @@
                         </TransformGroup>
                     </ed:Arc.RenderTransform>
                 </ed:Arc>
-                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" Source="gas-station.png" Margin="0,0,54,99"/>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" Source="Icons/gas-station.png" Margin="0,0,54,99"/>
                 <Label Content="E" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,327,10,100.5" Height="45" Width="36"/>
                 <Label Content="F" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,105,167,322.5" Height="45" Width="36"/>
 
                 <StackPanel HorizontalAlignment="Center" Height="75" VerticalAlignment="Center" Margin="152,282,107,115.5" Width="88">
                     <StackPanel Orientation="Horizontal">
-                        <Image x:Name="Seatbelt_Icon" Width="40" Source="seatbelt.png"/>
-                        <Image x:Name="Airbag_Icon" Width="25" Source="airbag.png"/>
+                        <Image x:Name="Seatbelt_Icon" Width="40" Source="Icons/seatbelt.png"/>
+                        <Image x:Name="Airbag_Icon" Width="25" Source="Icons/airbag.png"/>
                     </StackPanel>
                     <StackPanel x:Name="Door_Notif" Orientation="Horizontal">
-                        <Image Width="15" Source="Notif_red.png"/>
+                        <Image Width="15" Source="Icons/Notif_red.png"/>
                         <TextBlock Text="Door open" Margin="3,0,0,0" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
@@ -178,7 +178,7 @@
                             <TextBlock Text="Outside" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="Cruise_Label" Foreground="Turquoise" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label x:Name="Cruise_Label" Content="{Binding Path=Value, ElementName=Cruise, Mode=OneWay}" Foreground="Turquoise" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="mph Cruise" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
@@ -187,12 +187,12 @@
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Margin="101,285,110,124" Width="100" Height="60">
                     <StackPanel>
                         <StackPanel Margin="0,5,0,5" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
-                            <Image x:Name="CEL_Icon" Margin="3,0,0,0" Source="CEL.png" Width="25"/>
-                            <Image x:Name="Oil_Icon" Width="25" Source="oil.png" Margin="3,0,0,0"/>
-                            <Image x:Name="Bat_Icon" Source="battery.png" Margin="3,0,0,0" Width="20"/>
+                            <Image x:Name="CEL_Icon" Margin="3,0,0,0" Source="Icons/CEL.png" Width="25"/>
+                            <Image x:Name="Oil_Icon" Width="25" Source="Icons/oil.png" Margin="3,0,0,0"/>
+                            <Image x:Name="Bat_Icon" Source="Icons/battery.png" Margin="3,0,0,0" Width="20"/>
                         </StackPanel>
                         <StackPanel x:Name="Notification" Orientation="Horizontal">
-                            <Image Source="Notif.png" Width="15" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            <Image Source="Icons/Notif.png" Width="15" VerticalAlignment="Center" Margin="5,0,0,0"/>
                             <TextBlock Text="Service soon" Foreground="#FF9900" Margin="5,0,0,0"/>
                         </StackPanel>
                     </StackPanel>
@@ -200,7 +200,7 @@
                 <!--Temp icons-->
                 <Label Content="C" FontSize="25" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,325,0,99" Height="45" Width="36"/>
                 <Label Content="H" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,103,86,321" Height="45" Width="36"/>
-                <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Source="temp.png" Margin="56,338,215,91"/>
+                <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Icons/temp.png" Margin="56,338,215,91"/>
 
                 <Border HorizontalAlignment="Right" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="0,375,-52,34" Width="100" Height="60">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
@@ -227,7 +227,7 @@
         <!--The gear HUD-->
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Image x:Name="left_blinker" Source="left_blinker.png" VerticalAlignment="Bottom" 
+            <Image x:Name="left_blinker" Source="Icons/left_blinker.png" VerticalAlignment="Bottom" 
                    Margin="0,0,60,120" Width="50" Height="50" HorizontalAlignment="Left"/>
             <Border HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60" Margin="0,0,0,10" CornerRadius="5" Background="#FF191A25">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -235,7 +235,7 @@
                     <TextBlock Text="D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60"/>
                 </StackPanel>
             </Border>
-            <Image x:Name="right_blinker" Source="right_blinker.png" VerticalAlignment="Bottom" 
+            <Image x:Name="right_blinker" Source="Icons/right_blinker.png" VerticalAlignment="Bottom" 
                    Margin="60,0,0,120" Width="50" Height="50" HorizontalAlignment="Right"/>
         </StackPanel>
 
@@ -247,6 +247,8 @@
                 <Slider x:Name="SpeedSlider"  Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="True" TickFrequency="5" Value="0"/>
                 <TextBlock Text="RPM" Foreground="White"/>
                 <Slider x:Name="RPM" Minimum="0" Maximum="170" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+                <TextBlock Text="Cruise" Foreground="White"/>
+                <Slider x:Name="Cruise" Minimum="0" Maximum="100" SmallChange="5" IsSnapToTickEnabled="True" Value="0" TickFrequency="10"/>
                 <TextBlock Text="Temp" Foreground="White"/>
                 <Slider x:Name="Temp" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" ValueChanged="Temp_Change"/>
                 <TextBlock Text="Fuel" Foreground="White"/>
