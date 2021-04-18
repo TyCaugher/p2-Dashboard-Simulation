@@ -95,34 +95,42 @@
                         </TransformGroup>
                     </ed:Arc.RenderTransform>
                 </ed:Arc>
-                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="40" Source="gas-station.png" Margin="0,0,44,134"/>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="30" Source="gas-station.png" Margin="0,0,54,99"/>
                 <Label Content="E" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,327,10,100.5" Height="45" Width="36"/>
                 <Label Content="F" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,105,167,322.5" Height="45" Width="36"/>
 
 
                 <!--Fuel Info-->
-                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="142,187,60,191.5" Width="98" Height="94" >
-                    <StackPanel>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"  Width="100" Height="80" Margin="143,194,59,195" >
+                    <StackPanel VerticalAlignment="Center">
+                        
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="32" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBlock Text="avg. mpg" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Content="32" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="avg. mpg" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label x:Name="Mileage" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                            <TextBlock Text="mi. range" Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <Label Content="87,326" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                            <TextBlock Text="mi." Foreground="#FF878A9F" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="mi. range" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
-
+                </Border>
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="122,279,89,132" Width="100" Height="60">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="564" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBlock Text="Trip" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="87,326" Foreground="White" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBlock Text="mi." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
                 </Border>
 
             </Grid>
             <!--The temperature gauge-->
 
-            <Grid HorizontalAlignment="Left">
+            <Grid HorizontalAlignment="Left" Margin="-9,0,0,0">
                 <ed:Arc StartAngle="-10" EndAngle="120" Stretch="None"
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="#FF484D5F"
@@ -151,6 +159,33 @@
                         </TransformGroup>
                     </ed:Arc.RenderTransform>
                 </ed:Arc>
+
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25"   Width="100" Height="80" Margin="67,194,133,195">
+                    <StackPanel VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="83° F" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock Text="Outside" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <!--Lights beneath temp-->
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="10" Background="#FF191A25" Margin="87,278,124,131" Width="100" Height="60">
+                    <StackPanel>
+                        <StackPanel Margin="0,5,0,5" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal">
+                            <Image x:Name="CEL_Icon" Margin="3,0,0,0" Source="CEL.png" Width="25"/>
+                            <Image Width="25" Source="oil.png" Margin="3,0,0,0"/>
+                            <Image Source="battery.png" Margin="3,0,0,0" Width="20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Notif.png" Width="15" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                            <TextBlock x:Name="Notification" Text="Service soon" Foreground="#FF9900" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <!--Temp icons-->
+                <Label Content="C" FontSize="25" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="34,325,0,99" Height="45" Width="36"/>
+                <Label Content="H" FontSize="30" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,103,86,321" Height="45" Width="36"/>
+                <Image Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Source="temp.png" Margin="56,338,215,91"/>
             </Grid>
         </Grid>
 

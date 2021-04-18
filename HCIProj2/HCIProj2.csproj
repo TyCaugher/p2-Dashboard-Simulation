@@ -114,5 +114,20 @@
   <ItemGroup>
     <Resource Include="gas-station.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CEL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Notif.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="oil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="battery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="temp.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
