@@ -30,6 +30,8 @@ namespace HCIProj2
 
             InitializeComponent();
 
+            // Initialization
+
             left_blinker.Opacity = 0.0;
             right_blinker.Opacity = 0.0;
             CEL_Icon.Opacity = 0.0;
@@ -41,17 +43,17 @@ namespace HCIProj2
             timer.Interval = new TimeSpan(0, 0, 0, 0, 500);
 
             Mileage.Content = 0;
-
-            // Reset the blinker opacity on launch
-
-            // Blink timer
-            
         }
 
         private bool isBlinking = false;
         private bool left = false;
         private bool right = false;
         private bool em = false;
+
+        private bool needsService = false;
+        private bool cel = false;
+        private bool battery = false;
+        private bool oil = false;
 
         private void TimerTick(object sender, EventArgs e)
         {
@@ -165,7 +167,103 @@ namespace HCIProj2
                 FuelGauge.Stroke = Brushes.Red;
             }
   
+        }
 
+        private void Temp_Change(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            double tempVal = Temp.Value;
+
+            if (tempVal >= 60 && tempVal <= 120) // If between 90 and 120
+            {
+                Temp_Gauge.Stroke = Brushes.Orange;
+            }
+            else if (tempVal >= 30 && tempVal < 60)
+            {
+                Temp_Gauge.Stroke = Brushes.Turquoise;
+            }
+            else
+            {
+                Temp_Gauge.Stroke = Brushes.LightBlue;
+            }
+
+        }
+
+        private bool ServiceCheck()
+        {
+            if (cel == true || battery == true || oil == true)
+            {
+                needsService = true;
+                return true;
+            }
+            else
+            {
+                needsService = false;
+                Notification.Opacity = 0;
+                return false;
+            }
+        }
+
+        private void CEL_Click(object sender, RoutedEventArgs e)
+        {
+            if (!cel)
+            {
+                cel = true;
+                CEL_Icon.Opacity = 1;
+
+                if (!needsService)
+                {
+                    needsService = true;
+                    Notification.Opacity = 1;
+                }
+            }
+            else
+            {
+                CEL_Icon.Opacity = 0;
+                cel = false;
+                ServiceCheck();
+            }
+        }
+
+        private void Oil_Click(object sender, RoutedEventArgs e)
+        {
+            if (!oil)
+            {
+                oil = true;
+                Oil_Icon.Opacity = 1;
+
+                if (!needsService)
+                {
+                    needsService = true;
+                    Notification.Opacity = 1;
+                }
+            }
+            else
+            {
+                Oil_Icon.Opacity = 0;
+                oil = false;
+                ServiceCheck();
+            }
+        }
+
+        private void Bat_Click(object sender, RoutedEventArgs e)
+        {
+            if (!battery)
+            {
+                battery = true;
+                Bat_Icon.Opacity = 1;
+
+                if (!needsService)
+                {
+                    needsService = true;
+                    Notification.Opacity = 1;
+                }
+            }
+            else
+            {
+                Bat_Icon.Opacity = 0;
+                battery = false;
+                ServiceCheck();
+            }
         }
     }
 }

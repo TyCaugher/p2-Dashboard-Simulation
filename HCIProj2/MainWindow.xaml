@@ -109,7 +109,7 @@
                             <TextBlock Text="avg. mpg" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label x:Name="Mileage" Foreground="#FF878A9F" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <Label x:Name="Mileage" Foreground="White" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock Text="mi. range" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
@@ -144,11 +144,11 @@
                         </TransformGroup>
                     </ed:Arc.RenderTransform>
                 </ed:Arc>
-                <ed:Arc StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Temp, Mode=TwoWay}" Stretch="None" 
+                <ed:Arc x:Name="Temp_Gauge"  StartAngle="-10" EndAngle="{Binding Path=Value, ElementName=Temp, Mode=TwoWay}" Stretch="None" 
                     Height="300" Width="300" StrokeThickness="20"
                     StrokeDashArray=".25" Stroke="Turquoise" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,114,0,55">
                     <ed:Arc.Effect>
-                        <BlurEffect/>
+                        <BlurEffect Radius="2"/>
                     </ed:Arc.Effect>
                     <ed:Arc.RenderTransform>
                         <TransformGroup>
@@ -237,7 +237,7 @@
                 <TextBlock Text="RPM" Foreground="White"/>
                 <Slider x:Name="RPM" Minimum="0" Maximum="200" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
                 <TextBlock Text="Temp" Foreground="White"/>
-                <Slider x:Name="Temp" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0"/>
+                <Slider x:Name="Temp" Minimum="0" Maximum="120" SmallChange="1" IsSnapToTickEnabled="False" Value="0" ValueChanged="Temp_Change"/>
                 <TextBlock Text="Fuel" Foreground="White"/>
                 <Slider x:Name="Fuel" Minimum="0" Maximum="120" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" Value="0" RenderTransformOrigin="0.5,0.5" ValueChanged="FuelChanged">
                     <Slider.RenderTransform>
@@ -257,6 +257,16 @@
                     <Button x:Name="bl_left" Content="Left" Click="LeftBlinker"/>
                     <Button x:Name="emergency" Content="!!!" Click="BlinkEmergency"/>
                     <Button x:Name="bl_right" Content="Right" Click="RightBlinker"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="CEL_Button" Content="CEL" Click="CEL_Click"/>
+                    <Button x:Name="Oil_Button" Content="Oil" Click="Oil_Click"/>
+                    <Button x:Name="Bat_Button" Content="Bat" Click="Bat_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="Seat_Button" Content="Belt"/>
+                    <Button x:Name="Door_Button" Content="Door"/>
+                    <Button x:Name="Lights_Button" Content="Lights"/>
                 </StackPanel>
             </StackPanel>
         </Expander>
