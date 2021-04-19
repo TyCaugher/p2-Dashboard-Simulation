@@ -1,5 +1,9 @@
 # p2.TylerKauffman -- Designing a car's dashboard
 ## Created by Tyler Kauffman
+### Tools used in this project:
+ - Visual Studio
+ - XAML/C# WPF workflow for .NET Framework
+---
 1. ![Civic Si](https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2020-honda-civic-si-sedan-047-1573328085.jpg)
 2020 Honda Civic Si/Type-R
     - Pros
